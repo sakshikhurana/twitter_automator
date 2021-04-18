@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TweetAutomator</title>
+    <!-- Latest compiled and minified CSS -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<!-- Latest compiled and minified JavaScript -->
+{% comment %} <link href="//cdn.bootcss.com/bootstrap-datetimepicker/4.17.44/css/bootstrap-datetimepicker.min.css" rel="stylesheet"> {% endcomment %}
+<script src="//cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% comment %} <script src="//cdn.bootcss.com/moment.js/2.17.1/moment.min.js"></script> {% endcomment %}
+</head>
+
+<body>
+    <div class='container'>
+        <div class='row'>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{%url 'home'%}">TweetAutomator</a>
+ 
+
+            <div class="container" >
+                <ul class="nav navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{%url 'about'%}">About <span class="sr-only">(current)</span></a>
+                </li>
+                {%if user.is_authenticated%}
+                 <li class="nav-item">
+                    <a class="nav-link" href="{%url 'tweet:new'%}">New Tweet</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'logout'%}">Logout</a>
+                </li>
+                
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{%url 'login'%}">Login</a>
+                </li>
+                {% comment %} <li class="nav-item">
+                    <a class="nav-link" href="{%url 'register'%}">Register</a>
+                </li> {% endcomment %}
+                
+                {% endif %}
+                </ul>
+                
+            </div>
+        </nav>
+        {% block content %}{% endblock content %}
+        </div>
+    </div>
+</body>
+
+</html>

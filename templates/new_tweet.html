@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% block content %}
+{% comment %} {% if user.is_authenticated %} {% endcomment %}
+    <h1>New Tweet</h1>
+    <form method="post">
+        {% csrf_token %}
+
+        {% comment %} {{form.as_p}} {% endcomment %}
+        {% bootstrap_form form %}
+
+        {{ form.media }}  
+        <input type="submit" class="btn btn-primary" value="Tweet">
+    </form>
+  {% comment %} {% else %}
+    <h1>Please <a href="{%url 'login'%}">login</a></h1> {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
+{% endblock content %}
+  
